@@ -30,8 +30,10 @@ hoje = str(date.today()) #para manipulação de data usando string
 
 try:
     with open(arq, "rt") as arquivo: #checa se o arquivo de carteira existe, se nao existir ele cria
-        carteira = json.load(arquivo)
-
+        try:
+            carteira = json.load(arquivo)
+        except:
+            carteira = {}
 except FileNotFoundError:
     a = open(arq, "wt")
     a.close()
@@ -149,4 +151,5 @@ PS: Eu decidi so fazer essas alterações no final do programa, pois caso eu fiz
     
     O unico defeito de fazer assim, é caso o usuario não encerre pelo MENU, as informações não serão salvas,
     porém, isso já está avisado na inicialização do programa.
+
 """
